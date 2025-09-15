@@ -1,5 +1,6 @@
 package com.example.URLshortner.URLshortner.Controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,6 +63,17 @@ public class RootController {
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "Short URL not found!");
         }
+    }
+
+    @PostMapping("/customAlias")
+    public String createCustomAlias(@RequestParam String originalURL, @RequestParam String customAlias) {
+        return urlService.customAlias(originalURL, customAlias);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteURLMapping(@RequestParam String shortURL) {
+        urlService.deleteURLMapping(shortURL);
+        return new ResponseEntity<>("URL mapping deleted successfully.", HttpStatus.OK);
     }
 
 }

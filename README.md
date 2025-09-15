@@ -7,6 +7,7 @@ A minimal viable product (MVP) for a URL shortener built with Spring Boot.
 - Shorten long URLs to compact links
 - Redirect short URLs to original destinations
 - Basic REST API endpoints
+- Shorten URLs to custom Aliases
 
 ## Getting Started
 
@@ -42,7 +43,6 @@ mvn spring-boot:run
 
 ## Under Development
 
-- `POST /{customAlias}` - Custom Alias for Links
 - **CLI Tool**
   - `golink add myproject <url>`
   - `golink open myproject`

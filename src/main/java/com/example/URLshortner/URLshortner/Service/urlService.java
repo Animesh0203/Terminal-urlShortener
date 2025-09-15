@@ -51,6 +51,22 @@ public class urlService {
         return url.map(urlModel::getOriginalURL).orElse(null);
     }
 
+    @Cacheable(value = "urlsByShort", key = "#shortURL")
+    public String customAlias(String originalURL, String customAlias) {
+        Optional<urlModel> existingUrl = Optional.ofNullable(urlRepository.findByShortUrl(customAlias));
+        if (existingUrl.isPresent()) {
+            return "Custom alias already in use.";
+        }
+
+        urlModel urlModel = new urlModel();
+        urlModel.setOriginalURL(originalURL);
+        urlModel.setShortUrl(customAlias);
+
+        urlRepository.save(urlModel);
+
+        return "http://localhost:" + serverPort + "/" + customAlias;
+    }
+
     // Delete mapping
     @CacheEvict(value = { "urlsByShort", "urlsByOriginal" }, allEntries = true)
     public void deleteURLMapping(String shortURL) {
