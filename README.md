@@ -36,10 +36,13 @@ mvn spring-boot:run
 - `src/main/java` — Source code
 - `src/main/resources` — Configuration
 
+## Caching
+
+- Redis Caching for faster Look-Up
+
 ## Under Development
 
 - `POST /{customAlias}` - Custom Alias for Links
-- Redis Implementation for fast lookups
 - **CLI Tool**
   - `golink add myproject <url>`
   - `golink open myproject`
