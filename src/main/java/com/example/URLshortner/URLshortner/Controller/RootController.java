@@ -44,12 +44,12 @@ public class RootController {
         return "URL Shortener API is running";
     }
 
-    @PostMapping("/shorten")
+    @PostMapping("/alias")
     public String shortenURL(@RequestParam String originalURL) {
         return urlService.generateShortURL(originalURL);
     }
 
-    @GetMapping("/expand")
+    @GetMapping("/original")
     public String expandURL(@RequestParam String shortURL) {
         return urlService.returnOriginalURL(shortURL);
     }

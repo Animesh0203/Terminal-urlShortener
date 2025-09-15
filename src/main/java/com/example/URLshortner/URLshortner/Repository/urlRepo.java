@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface urlRepo extends JpaRepository<urlModel, Long> {
     urlModel findByShortUrl(String shortURL);
+    urlModel findByOriginalURL(String originalURL);
 }
